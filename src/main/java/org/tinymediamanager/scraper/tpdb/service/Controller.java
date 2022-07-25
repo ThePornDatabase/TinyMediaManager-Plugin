@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tinymediamanager.scraper.http.TmmHttpClient;
+import org.tinymediamanager.scraper.tpdb.Const;
 import org.tinymediamanager.scraper.tpdb.entities.SceneGet;
 import org.tinymediamanager.scraper.tpdb.entities.SceneSearch;
 import org.tinymediamanager.scraper.tpdb.entities.SiteGet;
@@ -98,7 +99,7 @@ public class Controller {
      * @return a new retrofit object.
      */
     private Retrofit buildRetrofitInstance(OkHttpClient client) {
-        return new Retrofit.Builder().client(client).baseUrl("https://api.metadataapi.net")
+        return new Retrofit.Builder().client(client).baseUrl(Const.APIBaseURL)
                 .addConverterFactory(GsonConverterFactory.create(getGsonBuilder().create())).build();
     }
 }

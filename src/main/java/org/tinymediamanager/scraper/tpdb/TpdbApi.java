@@ -15,9 +15,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TpdbApi {
-    private static final String BaseURL = "https://metadataapi.net";
-    private static final String PerformerURL = BaseURL + "/performers/";
-    private static final String PerformerSiteURL = BaseURL + "/performers-site/";
     private static final Logger LOGGER = LoggerFactory.getLogger(TpdbApi.class);
     private final Controller controller;
 
@@ -128,10 +125,10 @@ public class TpdbApi {
                 person.setId(getId(), performer.parent.id);
                 person.setName(performer.parent.name);
                 person.setRole(performer.parent.extras.gender);
-                person.setProfileUrl(PerformerURL + performer.parent.slug);
+                person.setProfileUrl(Const.PerformerURL + performer.parent.slug);
             } else {
                 person.setName(performer.name);
-                person.setProfileUrl(PerformerSiteURL + performer.id);
+                person.setProfileUrl(Const.PerformerSiteURL + performer.id);
             }
 
             castMembers.add(person);
