@@ -90,12 +90,12 @@ Check back later
 
 <!-- CONTRIBUTING -->
 ## Contributing
-- Join the [Discord](https://discord.gg/VnD6KJqF) server and collaborate
+- Join the [Discord](https://discord.gg/XpSGpaB) server and collaborate
 - [Donate](https://www.patreon.com/metadataapi/posts) to the project
 
 <!-- CONTACT -->
 ## Contact
-Contact us on [Discord](https://discord.gg/VnD6KJqF)
+Contact us on [Discord](https://discord.gg/XpSGpaB)
 
 
 
