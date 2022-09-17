@@ -59,10 +59,14 @@
 
 ### Installation
 - Windows: Download the TPDB Add-on file (one file with a jar extension.) It can be found  [here](https://github.com/ThePornDatabase/TinyMediaManager-Plugin/releases) 
-- Place the jar file in the following folder can be found at: ``` C:\Users\yourusername\AppData\Local\Programs\tinyMediaManager\addons ```
+- Place the jar file in the following folder can be found at: ``` C:\Users\yourusername\AppData\Local\Programs\tinyMediaManager\Addons ```
 - Please note: If the addon folder does not exist, you must create it. This is not the same addon folder that the ffmpeg files are in.
 
-Other Operating Systems supported by TMM have not yet been test. Please provide feedback if you have used this Add-on with another OS.
+- Mac: Download as described in the Windows OS instructions above.
+- Place the jar file in the following folder can be found at: ``` /Applications/tinyMediaManager.app/Contents/Resources/Java/Addons ```
+- Please note: If the addon folder does not exist, you must create it.
+
+Other Operating Systems supported by TMM have not yet been tested. Please provide feedback if you have used this Add-on with another OS.
 
 
 
@@ -75,10 +79,8 @@ Go to settings, movies, scrapers, and select the checkbox next to the TPDB logo.
 - A dialogue box will pop up showing you the search results. You can modify the search parameters until you get the desired results.
 - Selecting OK will commit the results and write your NFO file/save a local poster
 
-> For a successful match to your Scenes, filenames should be in the format best recognized by the API. See the namer tool that is also part of this project
-> For matching movies, try to limit filename as much as possible to the actual name of the movie.  Remove any 'release tags' as much as possible
-
-
+> For a successful match to your Scenes, filenames should be in the format best recognized by the API. See the namer tool that is also part of this project.
+> Movies are not currently supported using this Addon with the API. Please see our other tools [here](https://metadataapi.net/tools)
 
 
 <!-- ROADMAP -->
