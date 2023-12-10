@@ -25,10 +25,11 @@ public class TpdbMovieTrailerProvider extends TpdbMetadataProvider implements IM
     public List<MediaTrailer> getTrailers(TrailerSearchAndScrapeOptions options) throws ScrapeException {
         String apiKey = getProviderInfo().getConfig().getValue("apiKey");
         TpdbApi api = new TpdbApi(apiKey);
+        String id = options.getIdAsString(getId());
 
         SceneEntity scene;
         try {
-            scene = api.getScene(options.getIdAsString(getId()));
+            scene = api.getScene(id, TpdbApi.SceneType.SCENE);
         } catch (Exception e) {
             throw new ScrapeException(e);
         }

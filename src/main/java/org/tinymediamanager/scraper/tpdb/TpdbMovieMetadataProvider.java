@@ -38,7 +38,7 @@ public class TpdbMovieMetadataProvider extends TpdbMetadataProvider implements I
 
         SceneSearch search;
         try {
-            search = controller.getScenesFromTitle(query);
+            search = controller.getScenesFromQuery(query);
         } catch (Exception e) {
             throw new ScrapeException(e);
         }
@@ -75,7 +75,7 @@ public class TpdbMovieMetadataProvider extends TpdbMetadataProvider implements I
         String id = options.getIdAsString(getId());
         if (id != null) {
             try {
-                scene = api.getScene(id);
+                scene = api.getScene(id, TpdbApi.SceneType.SCENE);
             } catch (Exception e) {
                 throw new ScrapeException(e);
             }

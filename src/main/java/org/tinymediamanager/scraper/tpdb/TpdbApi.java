@@ -18,6 +18,12 @@ public class TpdbApi {
     private static final Logger LOGGER = LoggerFactory.getLogger(TpdbApi.class);
     private final Controller controller;
 
+    public enum SceneType {
+        SCENE,
+        MOVIE,
+        JAV,
+    }
+
     public TpdbApi(String apiKey) {
         this.controller = new Controller(false);
         controller.setApiKey(apiKey);
@@ -58,10 +64,20 @@ public class TpdbApi {
         return result;
     }
 
-    public SceneEntity getScene(String id) throws ScrapeException {
-        SceneGet search;
+    public SceneEntity getScene(String id, SceneType type) throws ScrapeException {
+        SceneGet search = null;
         try {
-            search = controller.getSceneFromId(id);
+            switch (type) {
+                case SCENE:
+                    search = controller.getSceneFromId(id);
+                    break;
+                case MOVIE:
+                    search = controller.getMovieFromId(id);
+                    break;
+                case JAV:
+                    search = controller.getJAVFromId(id);
+                    break;
+            }
         } catch (Exception e) {
             LOGGER.error("error scene: {}", e.getMessage());
             throw new ScrapeException(e);

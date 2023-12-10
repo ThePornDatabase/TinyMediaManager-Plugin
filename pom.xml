@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.tinymediamanager</groupId>
             <artifactId>tinyMediaManager</artifactId>
-            <version>4.2.8</version>
+            <version>4.3.9</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

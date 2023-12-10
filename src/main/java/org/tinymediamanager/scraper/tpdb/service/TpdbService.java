@@ -1,8 +1,6 @@
 package org.tinymediamanager.scraper.tpdb.service;
 
-import org.tinymediamanager.scraper.tpdb.entities.SceneGet;
-import org.tinymediamanager.scraper.tpdb.entities.SceneSearch;
-import org.tinymediamanager.scraper.tpdb.entities.SiteGet;
+import org.tinymediamanager.scraper.tpdb.entities.*;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -20,7 +18,31 @@ public interface TpdbService {
         "User-Agent: " + UserAgent,
     })
     @GET("/scenes/{id}")
-    Call<SceneGet> scenesScrapeById(@Header("Authorization") String apikey, @Path("id") String id);
+    Call<SceneGet> sceneScrapeById(@Header("Authorization") String apikey, @Path("id") String id);
+
+    @Headers({
+            "User-Agent: " + UserAgent,
+    })
+    @GET("/movies")
+    Call<SceneSearch> moviesSearch(@Header("Authorization") String apikey, @Query("parse") String query);
+
+    @Headers({
+        "User-Agent: " + UserAgent,
+    })
+    @GET("/movies/{id}")
+    Call<SceneGet> movieScrapeById(@Header("Authorization") String apikey, @Path("id") String id);
+
+    @Headers({
+            "User-Agent: " + UserAgent,
+    })
+    @GET("/jav")
+    Call<SceneSearch> javSearch(@Header("Authorization") String apikey, @Query("parse") String query);
+
+    @Headers({
+        "User-Agent: " + UserAgent,
+    })
+    @GET("/jav/{id}")
+    Call<SceneGet> javScrapeById(@Header("Authorization") String apikey, @Path("id") String id);
 
     @Headers({
         "User-Agent: " + UserAgent,

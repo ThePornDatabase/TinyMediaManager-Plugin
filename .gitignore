@@ -27,3 +27,5 @@ pom.xml.*
 
 #Vim
 *.swp
+
+.PVS-Studio
