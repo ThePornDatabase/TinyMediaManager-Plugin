@@ -6,7 +6,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ThePornDatabase/TinyMediaManager-Plugin">
-    <img src="https://metadataapi.net/images/logo.png" alt="Logo" width="200" height="100">
+    <img src="https://theporndb.net/images/logo.png" alt="Logo" width="200" height="100">
   </a>
 
   <h3 align="center">Tiny Media Manager Metadata Plug-In</h3>
@@ -55,7 +55,7 @@
 ### Prerequisites
 - You must HAVE tiny Media manager Installed. It can be obtained [here](https://www.tinymediamanager.org/)
 - You need to have a basic understanding of how to download from git and move files around your OS.
-- You should have obtained an API Token from [ThePornDB](https://metadataapi.net/)
+- You should have obtained an API Token from [ThePornDB](https://theporndb.net/)
 
 ### Installation
 - Windows: Download the TPDB Add-on file (one file with a jar extension.) It can be found  [here](https://github.com/ThePornDatabase/TinyMediaManager-Plugin/releases) 
@@ -80,7 +80,7 @@ Go to settings, movies, scrapers, and select the checkbox next to the TPDB logo.
 - Selecting OK will commit the results and write your NFO file/save a local poster
 
 > For a successful match to your Scenes, filenames should be in the format best recognized by the API. See the namer tool that is also part of this project.
-> Movies are not currently supported using this Addon with the API. Please see our other tools [here](https://metadataapi.net/tools)
+> Movies are not currently supported using this Addon with the API. Please see our other tools [here](https://theporndb.net/tools)
 
 
 <!-- ROADMAP -->
