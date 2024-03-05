@@ -89,18 +89,17 @@ Go to settings, movies, scrapers, and select the checkbox next to the TPDB logo.
 Check back later
 
 
-
 <!-- CONTRIBUTING -->
 ## Contributing
-- Join the [Discord](https://discord.gg/XpSGpaB) server and collaborate
-- [Donate](https://www.patreon.com/metadataapi/posts) to the project
+- Join the [Discord](https://theporndb.net/discord) server and collaborate
+- [Donate](https://theporndb.net/donate) to the project
 
 <!-- CONTACT -->
 ## Contact
-Contact us on [Discord](https://discord.gg/XpSGpaB)
+Contact us on [Discord](https://theporndb.net/discord)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-Thanks to Dirtyracer for creating this. 
+Thanks to DirtyRacer for creating this. 
