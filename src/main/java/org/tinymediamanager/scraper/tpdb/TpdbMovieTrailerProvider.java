@@ -16,6 +16,7 @@ public class TpdbMovieTrailerProvider extends TpdbMetadataProvider implements IM
         MediaProviderInfo info = super.createMediaProviderInfo();
 
         info.getConfig().addText("apiKey", "", true);
+        info.getConfig().addSelect("type", new String[] {"Scene", "Movie", "JAV"}, "Scene");
         info.getConfig().load();
 
         return info;
@@ -25,11 +26,12 @@ public class TpdbMovieTrailerProvider extends TpdbMetadataProvider implements IM
     public List<MediaTrailer> getTrailers(TrailerSearchAndScrapeOptions options) throws ScrapeException {
         String apiKey = getProviderInfo().getConfig().getValue("apiKey");
         TpdbApi api = new TpdbApi(apiKey);
+        TpdbApi.SceneType type = api.getType(getProviderInfo().getConfig().getValue("type"));
         String id = options.getIdAsString(getId());
 
         SceneEntity scene;
         try {
-            scene = api.getScene(id, TpdbApi.SceneType.SCENE);
+            scene = api.getScene(id, type);
         } catch (Exception e) {
             throw new ScrapeException(e);
         }

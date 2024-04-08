@@ -12,6 +12,7 @@ import org.tinymediamanager.scraper.tpdb.entities.SceneEntity;
 import org.tinymediamanager.scraper.tpdb.entities.SceneSearch;
 import org.tinymediamanager.scraper.tpdb.service.Controller;
 
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -21,6 +22,7 @@ public class TpdbMovieMetadataProvider extends TpdbMetadataProvider implements I
         MediaProviderInfo info = super.createMediaProviderInfo();
 
         info.getConfig().addText("apiKey", "", true);
+        info.getConfig().addSelect("type", new String[] {"Scene", "Movie", "JAV"}, "Scene");
         info.getConfig().load();
 
         return info;
@@ -30,25 +32,25 @@ public class TpdbMovieMetadataProvider extends TpdbMetadataProvider implements I
     public SortedSet<MediaSearchResult> search(MovieSearchAndScrapeOptions options) throws ScrapeException {
         String apiKey = getProviderInfo().getConfig().getValue("apiKey");
         TpdbApi api = new TpdbApi(apiKey);
-        Controller controller = api.getController();
+        TpdbApi.SceneType type = api.getType(getProviderInfo().getConfig().getValue("type"));
 
         SortedSet<MediaSearchResult> results = new TreeSet<>();
 
         String query = options.getSearchQuery();
 
-        SceneSearch search;
+        List<SceneEntity> search;
         try {
-            search = controller.getScenesFromQuery(query);
+            search = api.searchScenes(query, type);
         } catch (Exception e) {
             throw new ScrapeException(e);
         }
 
-        if (search == null || search.data.isEmpty()) {
+        if (search == null || search.isEmpty()) {
             throw new NothingFoundException();
         }
 
         float score = 100.0F;
-        for (SceneEntity scene : search.data) {
+        for (SceneEntity scene : search) {
             MediaSearchResult data = new MediaSearchResult(getId(), MediaType.MOVIE);
 
             data.setId(getId(), scene.id);
@@ -69,13 +71,14 @@ public class TpdbMovieMetadataProvider extends TpdbMetadataProvider implements I
     public MediaMetadata getMetadata(MovieSearchAndScrapeOptions options) throws ScrapeException {
         String apiKey = this.getProviderInfo().getConfig().getValue("apiKey");
         TpdbApi api = new TpdbApi(apiKey);
+        TpdbApi.SceneType type = api.getType(getProviderInfo().getConfig().getValue("type"));
 
         SceneEntity scene = null;
 
         String id = options.getIdAsString(getId());
         if (id != null) {
             try {
-                scene = api.getScene(id, TpdbApi.SceneType.SCENE);
+                scene = api.getScene(id, type);
             } catch (Exception e) {
                 throw new ScrapeException(e);
             }

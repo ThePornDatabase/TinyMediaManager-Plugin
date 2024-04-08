@@ -64,6 +64,46 @@ public class TpdbApi {
         return result;
     }
 
+    public SceneType getType(String type) {
+        switch (type) {
+            case "Scene":
+                return SceneType.SCENE;
+            case "Movie":
+                return SceneType.MOVIE;
+            case "JAV":
+                return SceneType.JAV;
+        }
+
+        return null;
+    }
+
+    public List<SceneEntity> searchScenes(String q, SceneType type) throws ScrapeException {
+        SceneSearch search = null;
+        try {
+            switch (type) {
+                case SCENE:
+                    search = controller.getScenesFromQuery(q);
+                    break;
+                case MOVIE:
+                    search = controller.getMoviesFromQuery(q);
+                    break;
+                case JAV:
+                    search = controller.getJAVFromQuery(q);
+                    break;
+            }
+        } catch (Exception e) {
+            LOGGER.error("error search: {}", e.getMessage());
+            throw new ScrapeException(e);
+        }
+
+        if (search == null || search.data == null) {
+            LOGGER.warn("no result found");
+            throw new NothingFoundException();
+        }
+
+        return search.data;
+    }
+
     public SceneEntity getScene(String id, SceneType type) throws ScrapeException {
         SceneGet search = null;
         try {
