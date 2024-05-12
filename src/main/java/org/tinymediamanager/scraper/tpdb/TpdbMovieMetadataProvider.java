@@ -2,32 +2,18 @@ package org.tinymediamanager.scraper.tpdb;
 
 import org.tinymediamanager.core.movie.MovieSearchAndScrapeOptions;
 import org.tinymediamanager.scraper.MediaMetadata;
-import org.tinymediamanager.scraper.MediaProviderInfo;
 import org.tinymediamanager.scraper.MediaSearchResult;
 import org.tinymediamanager.scraper.entities.MediaType;
 import org.tinymediamanager.scraper.exceptions.NothingFoundException;
 import org.tinymediamanager.scraper.exceptions.ScrapeException;
 import org.tinymediamanager.scraper.interfaces.IMovieMetadataProvider;
 import org.tinymediamanager.scraper.tpdb.entities.SceneEntity;
-import org.tinymediamanager.scraper.tpdb.entities.SceneSearch;
-import org.tinymediamanager.scraper.tpdb.service.Controller;
 
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class TpdbMovieMetadataProvider extends TpdbMetadataProvider implements IMovieMetadataProvider {
-    @Override
-    public MediaProviderInfo createMediaProviderInfo() {
-        MediaProviderInfo info = super.createMediaProviderInfo();
-
-        info.getConfig().addText("apiKey", "", true);
-        info.getConfig().addSelect("type", new String[] {"Scene", "Movie", "JAV"}, "Scene");
-        info.getConfig().load();
-
-        return info;
-    }
-
     @Override
     public SortedSet<MediaSearchResult> search(MovieSearchAndScrapeOptions options) throws ScrapeException {
         String apiKey = getProviderInfo().getConfig().getValue("apiKey");

@@ -19,8 +19,14 @@ public class TpdbMetadataProvider implements IMediaProvider {
     }
 
     public MediaProviderInfo createMediaProviderInfo() {
-        return new MediaProviderInfo("tpdb", "movie",
+        MediaProviderInfo info = new MediaProviderInfo("tpdb", "movie",
                 "theporndb.net", "<html><h3>ThePornDB (TPDB)</h3></html>",
                 TpdbMetadataProvider.class.getResource("/org/tinymediamanager/scraper/tpdb/logo.png"));
+
+        info.getConfig().addText("apiKey", "", true);
+        info.getConfig().addSelect("type", new String[] {"Scene", "Movie", "JAV"}, "Scene");
+        info.getConfig().load();
+
+        return info;
     }
 }

@@ -29,10 +29,6 @@ public class TpdbApi {
         controller.setApiKey(apiKey);
     }
 
-    public Controller getController() {
-        return this.controller;
-    }
-
     private String getId() {
         return "tpdb";
     }
