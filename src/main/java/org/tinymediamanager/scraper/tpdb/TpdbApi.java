@@ -54,7 +54,7 @@ public class TpdbApi {
         result.setReleaseDate(getDate(scene.date));
         result.setYear(getYear(result.getReleaseDate()));
 
-        result.setCastMembers(getCastMembers(scene.performers));
+        result.setCastMembers(getCastMembers(scene.performers, scene.directors));
         result.setTags(scene.tags.stream().map(o -> o.name).sorted().collect(Collectors.toList()));
 
         return result;
@@ -165,7 +165,7 @@ public class TpdbApi {
         return certifications;
     }
 
-    public List<Person> getCastMembers(List<PerformerEntity> performers) {
+    public List<Person> getCastMembers(List<PerformerEntity> performers, List<DirectorEntity> directors) {
         List<Person> castMembers = new ArrayList<>();
 
         for (PerformerEntity performer : performers) {
@@ -182,6 +182,14 @@ public class TpdbApi {
                 person.setName(performer.name);
                 person.setProfileUrl(Const.PerformerSiteURL + performer.id);
             }
+
+            castMembers.add(person);
+        }
+
+        for (DirectorEntity director : directors) {
+            Person person = new Person();
+            person.setType(Person.Type.DIRECTOR);
+            person.setName(director.name);
 
             castMembers.add(person);
         }

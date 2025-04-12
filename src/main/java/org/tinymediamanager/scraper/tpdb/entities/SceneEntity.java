@@ -32,6 +32,9 @@ public class SceneEntity {
     @SerializedName("performers")
     public List<PerformerEntity> performers;
 
+    @SerializedName("directors")
+    public List<DirectorEntity> directors;
+
     @SerializedName("site")
     public SiteEntity site;
 
