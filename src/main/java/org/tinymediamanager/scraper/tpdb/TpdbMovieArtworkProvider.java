@@ -33,8 +33,10 @@ public class TpdbMovieArtworkProvider extends TpdbMetadataProvider implements IM
         artworks.add(artwork);
 
         artwork = new MediaArtwork(getId(), MediaArtwork.MediaArtworkType.BACKGROUND);
-        artwork.addImageSize(1500, 1000, scene.background.large, MediaArtwork.PosterSizes.getSizeOrder(1500));
-        artwork.setOriginalUrl(scene.background.large);
+        artwork.addImageSize(1500, 1500, scene.background.large, MediaArtwork.PosterSizes.getSizeOrder(1500));
+        artwork.addImageSize(750, 750, scene.background.medium, MediaArtwork.PosterSizes.getSizeOrder(750));
+        artwork.addImageSize(500, 500, scene.background.small, MediaArtwork.PosterSizes.getSizeOrder(500));
+        artwork.setOriginalUrl(scene.background.full);
         artwork.setPreviewUrl(scene.background.small);
         artworks.add(artwork);
 

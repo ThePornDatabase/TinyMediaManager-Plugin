@@ -61,32 +61,23 @@ public class TpdbApi {
     }
 
     public SceneType getType(String type) {
-        switch (type) {
-            case "Scene":
-                return SceneType.SCENE;
-            case "Movie":
-                return SceneType.MOVIE;
-            case "JAV":
-                return SceneType.JAV;
-        }
+        return switch (type) {
+            case "Scene" -> SceneType.SCENE;
+            case "Movie" -> SceneType.MOVIE;
+            case "JAV" -> SceneType.JAV;
+            default -> null;
+        };
 
-        return null;
     }
 
     public List<SceneEntity> searchScenes(String q, SceneType type) throws ScrapeException {
         SceneSearch search = null;
         try {
-            switch (type) {
-                case SCENE:
-                    search = controller.getScenesFromQuery(q);
-                    break;
-                case MOVIE:
-                    search = controller.getMoviesFromQuery(q);
-                    break;
-                case JAV:
-                    search = controller.getJAVFromQuery(q);
-                    break;
-            }
+            search = switch (type) {
+                case SCENE -> controller.getScenesFromQuery(q);
+                case MOVIE -> controller.getMoviesFromQuery(q);
+                case JAV -> controller.getJAVFromQuery(q);
+            };
         } catch (Exception e) {
             LOGGER.error("error search: {}", e.getMessage());
             throw new ScrapeException(e);
@@ -103,17 +94,11 @@ public class TpdbApi {
     public SceneEntity getScene(String id, SceneType type) throws ScrapeException {
         SceneGet search = null;
         try {
-            switch (type) {
-                case SCENE:
-                    search = controller.getSceneFromId(id);
-                    break;
-                case MOVIE:
-                    search = controller.getMovieFromId(id);
-                    break;
-                case JAV:
-                    search = controller.getJAVFromId(id);
-                    break;
-            }
+            search = switch (type) {
+                case SCENE -> controller.getSceneFromId(id);
+                case MOVIE -> controller.getMovieFromId(id);
+                case JAV -> controller.getJAVFromId(id);
+            };
         } catch (Exception e) {
             LOGGER.error("error scene: {}", e.getMessage());
             throw new ScrapeException(e);
@@ -148,7 +133,7 @@ public class TpdbApi {
             try {
                 Calendar calendar = new GregorianCalendar();
                 calendar.setTime(date);
-                year = calendar.get(Calendar.YEAR);
+                year = (Integer)calendar.get(Calendar.YEAR);
             } catch (Exception e) {
                 LOGGER.error("error year: {}", e.getMessage());
             }
